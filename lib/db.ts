@@ -108,8 +108,29 @@ db.exec(`
     PRIMARY KEY (phone, question_id)
   );
 
+  CREATE TABLE IF NOT EXISTS chat_messages (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    session_id TEXT NOT NULL,
+    user_name TEXT,
+    message TEXT NOT NULL,
+    sender TEXT NOT NULL CHECK (sender IN ('user','admin')),
+    is_read INTEGER NOT NULL DEFAULT 0,
+    created_at TEXT NOT NULL DEFAULT (datetime('now'))
+  );
+
+  CREATE TABLE IF NOT EXISTS contact_requests (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    full_name TEXT NOT NULL,
+    phone TEXT NOT NULL,
+    email TEXT,
+    goal TEXT NOT NULL,
+    created_at TEXT NOT NULL DEFAULT (datetime('now'))
+  );
+
   CREATE INDEX IF NOT EXISTS idx_otp_codes_phone ON otp_codes(phone);
   CREATE INDEX IF NOT EXISTS idx_exam_sessions_phone ON exam_sessions(phone);
+  CREATE INDEX IF NOT EXISTS idx_chat_messages_session ON chat_messages(session_id);
+  CREATE INDEX IF NOT EXISTS idx_contact_requests_created ON contact_requests(created_at);
 `);
 
 seedIfEmpty(db);

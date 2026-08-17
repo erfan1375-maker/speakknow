@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CefrLadder } from "@/components/cefr-ladder";
+import { ChatWidget } from "@/components/chat-widget";
+import { FloatingContactButton } from "@/components/floating-contact-button";
 import { HowItWorks } from "@/components/how-it-works";
 import { IntroTrust } from "@/components/intro-trust";
 import { SampleReport } from "@/components/sample-report";
@@ -40,7 +42,7 @@ export default function HomePage() {
             aria-hidden
             className="pointer-events-none absolute -right-32 bottom-0 h-[22rem] w-[22rem] rounded-full bg-brand-50 blur-3xl"
           />
-          <div className="shell relative grid items-start gap-10 pt-8 md:pt-12 lg:grid-cols-[1fr_1.15fr]">
+          <div className="shell relative grid items-start gap-10 pt-8 md:pt-12 lg:grid-cols-[1.55fr_1fr]">
             <div className="lg:order-2 lg:min-w-0">
               <p className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm text-ink-muted shadow-[0_10px_30px_-20px_rgba(13,13,13,0.6)]">
                 <svg viewBox="0 0 24 24" className="h-4 w-4 text-brand-500" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
@@ -94,8 +96,8 @@ export default function HomePage() {
             </div>
 
             {/* photo module: one soft card holding the photo, the three cards beside it, and the stats strip underneath — beside the headline, not below it */}
-            <div className="w-full rounded-[28px] bg-gradient-to-br from-brand-100/70 via-brand-50 to-white p-5 text-right sm:rounded-[32px] sm:p-8 lg:order-1 lg:min-w-0">
-              <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1.3fr] lg:items-center lg:gap-6">
+            <div className="w-full rounded-[28px] bg-gradient-to-br from-brand-100/70 via-brand-50 to-white p-5 text-right sm:rounded-[32px] sm:p-6 lg:order-1 lg:min-w-0">
+              <div className="grid grid-cols-1 gap-6 lg:grid-cols-[0.95fr_1.6fr] lg:items-center lg:gap-3">
                 <div className="lg:min-w-0">
                   <IntroTrust />
                 </div>
@@ -123,17 +125,16 @@ export default function HomePage() {
                     <path d="M10 16l7 7M18 8l4 10M4 26l10 4" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
                   </svg>
 
-                  <div className="animate-fade-in relative aspect-[6/5] w-full overflow-hidden rounded-t-full rounded-b-3xl shadow-[0_20px_45px_-25px_rgba(13,13,13,0.45)]">
-                    <Image
-                      src="/hero-photo.png"
-                      alt="زبان‌آموز در حال یادگیری آنلاین با اسپیک‌نو"
-                      fill
-                      priority
-                      quality={90}
-                      sizes="(min-width: 1024px) 32vw, 90vw"
-                      className="object-cover"
-                    />
-                  </div>
+                  <Image
+                    src="/hero-photo-2.png"
+                    alt="زبان‌آموز در حال یادگیری آنلاین با اسپیک‌نو"
+                    width={1223}
+                    height={1286}
+                    priority
+                    quality={90}
+                    sizes="(min-width: 1024px) 46vw, 90vw"
+                    className="animate-fade-in relative z-10 h-auto w-full max-w-none drop-shadow-[0_30px_55px_rgba(13,13,13,0.28)]"
+                  />
                 </div>
               </div>
             </div>
@@ -340,6 +341,8 @@ export default function HomePage() {
       </main>
 
       <SiteFooter />
+      <FloatingContactButton />
+      <ChatWidget />
     </>
   );
 }

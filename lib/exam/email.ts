@@ -1,15 +1,8 @@
+import { sendEmail } from "@/lib/email";
 import type { StoredExamResult } from "./results";
 
 /** Set this once a real inbox is chosen — every completed report gets emailed here too. */
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL ?? null;
-
-/**
- * Stub email sender. Swap this out for a real provider (Resend, SendGrid, etc.)
- * later — every call site already awaits this, so the change is contained here.
- */
-async function sendEmail(to: string, subject: string, body: string): Promise<void> {
-  console.log(`[Email stub] To: ${to}\nSubject: ${subject}\n${body}\n`);
-}
 
 export async function sendReportEmails(result: StoredExamResult): Promise<void> {
   const subject = `گزارش تعیین سطح ${result.fullName}`;

@@ -7,10 +7,15 @@ export const site = {
   url: "https://speakknow.ir",
   phone: "۰۹۱۲ ۰۰۰ ۰۰۰۰",
   phoneHref: "tel:+989120000000",
-  email: "hello@speakknow.ir",
+  officePhone: "۰۲۱-۱۲۳۴۵۶۷۸",
+  officePhoneHref: "tel:+9821123456782",
+  email: "speakknow1@gmail.com",
+  address: "آکادمی آنلاین — در سراسر ایران قابل دسترس",
+  supportHours: "همه‌روزه، از ۹ صبح تا ۱۰ شب",
   instagram: "https://instagram.com/speakknow",
   telegram: "https://t.me/speakknow",
   whatsapp: "https://wa.me/989120000000",
+  bale: "https://ble.ir/speakknow",
   yearsTeaching: 7,
 } as const;
 
@@ -33,6 +38,28 @@ export const goals: { value: GoalValue; label: string; hint: string }[] = [
 
 export const goalLabel = (value: string) =>
   goals.find((g) => g.value === value)?.label ?? value;
+
+export type ContactGoalValue =
+  | "immigration"
+  | "study"
+  | "work"
+  | "daily"
+  | "exam"
+  | "kids"
+  | "other";
+
+export const contactGoals: { value: ContactGoalValue; label: string }[] = [
+  { value: "immigration", label: "مهاجرت" },
+  { value: "study", label: "تحصیل و دانشگاه" },
+  { value: "work", label: "کار و مصاحبه شغلی" },
+  { value: "daily", label: "مکالمه روزمره و سفر" },
+  { value: "exam", label: "آزمون‌های بین‌المللی (آیلتس/تافل)" },
+  { value: "kids", label: "تقویت زبان کودک/نوجوان" },
+  { value: "other", label: "سایر" },
+];
+
+export const contactGoalLabel = (value: string) =>
+  contactGoals.find((g) => g.value === value)?.label ?? value;
 
 /**
  * Cumulative guided-learning hours from zero, following the ranges Cambridge
