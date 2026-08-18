@@ -22,7 +22,7 @@ export const site = {
 export const nav = [
   { href: "/", label: "خانه" },
   { href: "/about", label: "درباره ما" },
-  { href: "/path", label: "دوره‌ها" },
+  { href: "/courses", label: "دوره‌ها" },
   { href: "/blog", label: "بلاگ" },
   { href: "/contact", label: "تماس با ما" },
 ] as const;

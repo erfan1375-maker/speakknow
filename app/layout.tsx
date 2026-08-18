@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque } from "next/font/google";
+import { GlobalWidgets } from "@/components/global-widgets";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="fa" dir="rtl" className={`${enDisplay.variable} h-full`}>
       <body className="flex min-h-full flex-col bg-white antialiased">
         {children}
+        <GlobalWidgets />
       </body>
     </html>
   );

@@ -1,8 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CefrLadder } from "@/components/cefr-ladder";
-import { ChatWidget } from "@/components/chat-widget";
-import { FloatingContactButton } from "@/components/floating-contact-button";
 import { HowItWorks } from "@/components/how-it-works";
 import { IntroTrust } from "@/components/intro-trust";
 import { SampleReport } from "@/components/sample-report";
@@ -341,8 +339,6 @@ export default function HomePage() {
       </main>
 
       <SiteFooter />
-      <FloatingContactButton />
-      <ChatWidget />
     </>
   );
 }

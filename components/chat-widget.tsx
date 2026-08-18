@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import { CloseIcon, SendIcon } from "@/components/icons";
 import { LinkifiedText } from "@/components/chat-message-text";
 import { QUICK_REPLIES } from "@/lib/chat/quick-replies";
@@ -98,8 +99,10 @@ const AVATARS = [
 
 const NAME_STORAGE_KEY = "speakknow_chat_name";
 const POLL_INTERVAL_MS = 4000;
+const HINT_DELAY_MS = 1500;
 
 export function ChatWidget() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [loaded, setLoaded] = useState(false);
@@ -109,6 +112,7 @@ export function ChatWidget() {
   const [quickReplyKeyPending, setQuickReplyKeyPending] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [confirmation, setConfirmation] = useState(false);
+  const [showHint, setShowHint] = useState(false);
 
   const rootRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -119,6 +123,18 @@ export function ChatWidget() {
     const saved = window.localStorage.getItem(NAME_STORAGE_KEY);
     if (saved) setName(saved);
   }, []);
+
+  // A small nudge bubble, shown every time a visitor lands on the home page.
+  useEffect(() => {
+    setShowHint(false);
+    if (pathname !== "/") return;
+    const timer = setTimeout(() => setShowHint(true), HINT_DELAY_MS);
+    return () => clearTimeout(timer);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (open) setShowHint(false);
+  }, [open]);
 
   useEffect(() => {
     if (!open) return;
@@ -337,6 +353,24 @@ export function ChatWidget() {
               </button>
             </div>
           </form>
+        </div>
+      )}
+
+      {showHint && !open && (
+        <div className="animate-fade-up relative max-w-[15rem] rounded-2xl bg-white p-4 pl-8 text-right shadow-[0_16px_40px_-16px_rgba(13,13,13,0.4)]">
+          <button
+            type="button"
+            onClick={() => setShowHint(false)}
+            aria-label="بستن راهنما"
+            className="absolute left-2.5 top-2.5 text-ink-faint transition-colors hover:text-ink"
+          >
+            <CloseIcon className="h-3.5 w-3.5" />
+          </button>
+          <p className="text-sm font-bold text-ink">نیاز به راهنمایی دارید؟</p>
+          <p className="mt-1 text-xs leading-relaxed text-ink-muted">
+            اگر سؤالی دارید همین‌جا با ما در میان بگذارید.
+          </p>
+          <span aria-hidden className="absolute -bottom-1.5 right-7 h-3 w-3 rotate-45 bg-white" />
         </div>
       )}
 
