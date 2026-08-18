@@ -25,6 +25,9 @@ export default function CoursesPage() {
               اختیار داره با هم فرق می‌کنه. کمک می‌کنیم دقیقاً همون مسیری رو پیدا کنی
               که به‌جای تو ساخته شده.
             </p>
+            <p className="mx-auto mt-3 max-w-xl text-sm leading-loose text-ink-faint">
+              پشتیبانی و نمودار پیشرفتت هم بعد از هر دوره، به‌طور کامل توسط سوپروایزر بررسی می‌شه.
+            </p>
           </div>
         </section>
 

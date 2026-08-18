@@ -7,6 +7,7 @@ import {
   courses,
   goals,
   ieltsBands,
+  ieltsCefrNote,
   ieltsSkillsNote,
   ieltsTypes,
   pathBooksNote,
@@ -192,19 +193,24 @@ export function CourseExplorer() {
                             سیستم نمره‌دهی <span className="en">(Band Score)</span>
                           </p>
                           <p className="mt-1 text-xs text-ink-faint">نمره از ۰ تا ۹ داده می‌شه:</p>
-                          <div className="mt-2 overflow-hidden rounded-xl border border-hairline">
-                            <table className="w-full text-xs">
-                              <tbody>
-                                {ieltsBands.map((b, i) => (
-                                  <tr key={b.range} className={i !== ieltsBands.length - 1 ? "border-b border-hairline" : ""}>
-                                    <td className="en px-3 py-2 font-semibold text-brand-600">Band {b.range}</td>
-                                    <td className="px-3 py-2 text-ink-muted">{b.label}</td>
-                                    <td className="en px-3 py-2 text-ink-faint">{b.en}</td>
-                                  </tr>
-                                ))}
-                              </tbody>
-                            </table>
+                          <div className="mt-2 divide-y divide-hairline overflow-hidden rounded-xl border border-hairline">
+                            {ieltsBands.map((b) => (
+                              <div
+                                key={b.range}
+                                className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 px-3 py-2.5 text-xs"
+                              >
+                                <p>
+                                  <span className="font-semibold text-brand-600">نمره {b.range}</span>
+                                  <span className="text-ink-muted"> — {b.label} </span>
+                                  <span className="en text-ink-faint">({b.en})</span>
+                                </p>
+                                <span className="en shrink-0 rounded-full bg-brand-50 px-2 py-0.5 font-medium text-brand-600">
+                                  ≈ {b.cefr}
+                                </span>
+                              </div>
+                            ))}
                           </div>
+                          <p className="mt-2 text-xs leading-relaxed text-ink-faint">{ieltsCefrNote}</p>
                         </div>
 
                         <p className="text-xs leading-relaxed text-ink-faint">{ieltsSkillsNote}</p>

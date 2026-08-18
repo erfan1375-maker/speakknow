@@ -118,7 +118,12 @@ export const pathContent: Record<PathKey, PathContent> = {
       { name: "Cambridge IELTS", note: "مجموعه‌ی رسمی نمونه‌سوالات با فرمت دقیقاً مشابه آزمون واقعی." },
       { name: "Barron's IELTS", note: "پوشش کامل استراتژی‌های هر بخش همراه با تمرین‌های گسترده." },
       { name: "Action Plan for IELTS", note: "مناسب برای شروع سریع و ساخت پایه‌ی استراتژی تست‌زنی." },
+      {
+        name: "SpeakKnow Exam Strategy & Feedback",
+        note: "بسته‌ی اختصاصی اسپیک‌نو شامل راهبردهای تست‌زنی و بازخورد دقیق روی عملکرد شما در هر بخش.",
+      },
     ],
+    photo: "/courses/ielts.jpg",
   },
   speaking: {
     key: "speaking",
@@ -153,11 +158,14 @@ export const ieltsTypes = [
 ];
 
 export const ieltsBands = [
-  { range: "9", label: "کاربر متخصص", en: "Expert User" },
-  { range: "۷ تا ۸", label: "کاربر ماهر / خیلی خوب", en: "Good / Very Good User" },
-  { range: "۵ تا ۶", label: "کاربر رقابتی / متوسط", en: "Competent / Modest User" },
-  { range: "۴ و کمتر", label: "کاربر محدود / مبتدی", en: "Limited User" },
+  { range: "۹", cefr: "C2", label: "کاربر متخصص", en: "Expert User" },
+  { range: "۷ تا ۸", cefr: "C1", label: "کاربر ماهر / خیلی خوب", en: "Good / Very Good User" },
+  { range: "۵ تا ۶", cefr: "B1 تا B2", label: "کاربر رقابتی / متوسط", en: "Competent / Modest User" },
+  { range: "۴ و کمتر", cefr: "A1 تا A2", label: "کاربر محدود / مبتدی", en: "Limited User" },
 ];
+
+export const ieltsCefrNote =
+  "این معادل‌ها تقریبی‌ان؛ مثلاً نمره‌ی ۶ آیلتس تقریباً معادل سطح B2 در استاندارد CEFR محسوب می‌شه.";
 
 export const ieltsSkillsNote =
   "دوره‌ی آمادگی آیلتس در اسپیک‌نو روی هر ۴ مهارت Speaking، Listening، Reading و Writing، همراه با استراتژی‌های تست‌زنی کار می‌کنه.";
