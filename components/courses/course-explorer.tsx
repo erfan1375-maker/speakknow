@@ -12,6 +12,7 @@ import {
   pathBooksNote,
   pathContent,
   pathFormatNote,
+  pathSupplementNote,
   type PathKey,
 } from "@/lib/courses";
 import { CloseIcon } from "@/components/icons";
@@ -212,14 +213,22 @@ export function CourseExplorer() {
 
                     <div>
                       <p className="font-semibold text-ink">کتاب‌های پیشنهادی</p>
-                      <ul className="mt-2 space-y-2">
+                      <ul className="mt-3 space-y-3">
                         {content.books.map((b) => (
-                          <li key={b.name}>
-                            <span className="en font-medium text-ink">{b.name}</span>
-                            <span className="text-ink-muted"> — {b.note}</span>
+                          <li key={b.name} className="flex items-start gap-3">
+                            {b.photo && (
+                              <span className="relative h-16 w-12 shrink-0 overflow-hidden rounded-md border border-hairline bg-white shadow-sm">
+                                <Image src={b.photo} alt={b.name} fill sizes="3rem" className="object-cover" />
+                              </span>
+                            )}
+                            <span>
+                              <span className="en block font-medium text-ink">{b.name}</span>
+                              <span className="text-ink-muted">{b.note}</span>
+                            </span>
                           </li>
                         ))}
                       </ul>
+                      <p className="mt-3 text-ink-faint">{pathSupplementNote}</p>
                     </div>
 
                     <p className="text-ink-faint">{pathBooksNote}</p>

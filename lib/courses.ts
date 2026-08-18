@@ -67,6 +67,7 @@ export const courses: Course[] = [
 export interface BookRef {
   name: string;
   note: string;
+  photo?: string;
 }
 
 export interface PathContent {
@@ -96,7 +97,16 @@ export const pathContent: Record<PathKey, PathContent> = {
     intro:
       "این مسیر برای کسایی مناسبه که می‌خوان از صفر یا از یه سطح پایه شروع کنن و پایه‌ی محکمی برای گرامر، لغات و مکالمه‌ی روزمره بسازن.",
     books: [
-      { name: "American English File", note: "یکی از معتبرترین و پرکاربردترین منابع آموزش انگلیسی عمومی در دنیا، متناسب با هر سطحی از A1 تا C1." },
+      {
+        name: "American English File",
+        note: "یکی از معتبرترین و پرکاربردترین منابع آموزش انگلیسی عمومی در دنیا، متناسب با هر سطحی از A1 تا C1.",
+        photo: "/courses/book-aef.jpg",
+      },
+      {
+        name: "Connectivity",
+        note: "دوره‌ای ارتباط‌محور از ناشر Pearson، با درس‌های هدف‌گرا که مکالمه‌ی روزمره و کاربرد واقعی زبان رو در اولویت می‌ذاره.",
+        photo: "/courses/book-connectivity.jpg",
+      },
     ],
   },
   ielts: {
@@ -126,6 +136,8 @@ export const pathFormatNote =
 
 export const pathBooksNote =
   "انتخاب دقیق کتاب بر اساس سطح شما، لهجه‌ی مدنظرتون (بریتیش یا آمریکن) و خواسته‌ی شخصی‌تون با استاد هماهنگ می‌شه.";
+
+export const pathSupplementNote = "بعلاوه‌ی منابع تکمیلی که با نظر استاد تدریس خواهند شد.";
 
 export const ieltsTypes = [
   {
