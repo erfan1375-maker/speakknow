@@ -43,9 +43,11 @@ export function CourseExplorer() {
   return (
     <div>
       {/* Goal tabs */}
-      <p className="text-center text-sm text-ink-muted">
-        اول هدفت رو انتخاب کن تا بهترین مسیر رو به تو پیشنهاد بدهیم:
-      </p>
+      <div className="text-center">
+        <p className="inline-flex items-center gap-2 rounded-full bg-brand-50 px-5 py-2.5 text-sm font-medium text-brand-700">
+          اول هدفت رو انتخاب کن تا بهترین مسیر رو به تو پیشنهاد بدهیم:
+        </p>
+      </div>
       <div className="mt-4 flex flex-wrap justify-center gap-3">
         {goals.map((g) => {
           const Icon = PATH_ICONS[g.key];
